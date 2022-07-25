@@ -519,4 +519,4 @@ PRODUCT_BOOT_JARS += \
     WfdCommon
 
 # Inherit the proprietary files
-$(call inherit-product, vendor/xiaomi/veux/sm6375-common/sm6375-common-vendor.mk)
+$(call inherit-product, vendor/xiaomi/sm6375-common/sm6375-common-vendor.mk)
