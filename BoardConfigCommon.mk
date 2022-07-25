@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-COMMON_PATH := device/xiaomi/sm6375-common
+COMMON_PATH := device/xiaomi/veux-common
 
 # A/B
 AB_OTA_UPDATER := true
