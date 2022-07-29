@@ -5,7 +5,7 @@
 #
 
 COMMON_PATH := device/xiaomi/veux-common
-
+KERNEL_PATH := kernel/xiaomi/veux
 # A/B
 AB_OTA_UPDATER := true
 
@@ -80,10 +80,8 @@ LOC_HIDL_VERSION := 4.0
 # HIDL
 DEVICE_MATRIX_FILE := $(COMMON_PATH)/compatibility_matrix.xml
 DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
-
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
-    $(COMMON_PATH)/framework_compatibility_matrix.xml \
-    vendor/lineage/config/device_framework_matrix.xml
+    $(COMMON_PATH)/framework_compatibility_matrix.xml
 
 ODM_MANIFEST_SKUS += nfc
 ODM_MANIFEST_NFC_FILES := $(COMMON_PATH)/manifest_nfc.xml
@@ -117,16 +115,16 @@ BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=recovery
 
 # Prebuilt Kernel
 BOARD_KERNEL_BINARIES := kernel
-BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)-kernel/dtbo.img
+BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbo.img
 TARGET_FORCE_PREBUILT_KERNEL := true
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)-kernel/kernel
+TARGET_PREBUILT_KERNEL := $(KERNEL_PATH)/kernel
 TARGET_KERNEL_CONFIG := holi_QGKI
-TARGET_PREBUILT_DTB := $(DEVICE_PATH)-kernel/dtb.img
+TARGET_PREBUILT_DTB := $(KERNEL_PATH)/dtb.img
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)-kernel/dtb.img:$(TARGET_COPY_OUT)/dtb.img \
-    $(DEVICE_PATH)-kernel/kernel:kernel \
-    $(call find-copy-subdir-files,*,$(DEVICE_PATH)-kernel/ramdisk-modules/,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules) \
-    $(call find-copy-subdir-files,*,$(DEVICE_PATH)-kernel/vendor-modules/,$(TARGET_COPY_OUT_VENDOR)/lib/modules)
+    $(KERNEL_PATH)/dtb.img:$(TARGET_COPY_OUT)/dtb.img \
+    $(KERNEL_PATH)/kernel:kernel \
+    $(call find-copy-subdir-files,*,$(KERNEL_PATH)/ramdisk-modules/,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules) \
+    $(call find-copy-subdir-files,*,$(KERNEL_PATH)/vendor-modules/,$(TARGET_COPY_OUT_VENDOR)/lib/modules)
 
 # Media
 TARGET_USES_ION := true
@@ -241,4 +239,4 @@ WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit the proprietary files
-include vendor/xiaomi/veux-common/BoardConfigVendor.mk
+include vendor/xiaomi/veux/BoardConfigVendor.mk
